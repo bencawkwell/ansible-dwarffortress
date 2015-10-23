@@ -1,0 +1,26 @@
+---
+- name: Fetch DF
+  get_url: url=http://www.bay12games.com/dwarves/df_40_20_linux.tar.bz2 dest=/df_40_20_linux.tar.bz2
+  tags: install
+
+- name: Decompress DF
+  unarchive: src=/df_40_20_linux.tar.bz2 dest=/ copy=no
+  tags:
+    - install
+    - reset
+
+- name: Fix sound (libopenal.so)
+  file: src=/usr/lib/i386-linux-gnu/libopenal.so.1
+        dest=/df_linux/libs/libopenal.so
+        state=link
+  tags:
+    - install
+    - reset
+
+- name: Fix sound (libsndfile.so)
+  file: src=/usr/lib/i386-linux-gnu/libsndfile.so.1
+        dest=/df_linux/libs/libsndfile.so
+        state=link
+  tags:
+    - install
+    - reset

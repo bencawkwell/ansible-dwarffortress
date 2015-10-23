@@ -1,0 +1,6 @@
+---
+- hosts: all
+
+  roles:
+    - common
+    - df_40_20
