@@ -20,7 +20,7 @@ This modifies the init.txt configuration file to set PRINT_MODE to TEXT.
 
 ### DfHack ###
 
-Coming soon.
+    ansible-playbook dfhack.yml --connection=local
 
 ### Tile sets ###
 
@@ -34,7 +34,6 @@ Tested with ansible 1.8.2.
 Todo
 ----
 
-* Add dfhack.
 * Add the Phoebus tile set.
 * Add noVnc.
 * Add some more tile sets.
