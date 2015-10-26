@@ -10,7 +10,7 @@ Within the directory of this project:
 
     ansible-playbook df_40_20.yml --connection=local
 
-This installs the dependancies for dwarf fortress, and dwarf fortress itself.
+This installs the dependencies for dwarf fortress, and dwarf fortress itself.
 
 If you want to run in text mode
 
@@ -54,3 +54,4 @@ Credits
 
 * Obviously Toady One at http://www.bay12games.com for Dwarf Fortress.
 * All the guys that maintain the Dwarf Fortress wiki (http://dwarffortresswiki.org/index.php/DF2012:Installation)
+* Chris Collins who's project inspired me to use noVNC (https://github.com/DockerDemos/DwarfFortressServer) and what I used to get started.
