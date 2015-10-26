@@ -1,0 +1,7 @@
+---
+- name: Install supervisor
+  sudo: yes
+  apt: name=supervisor state=present
+  tags: 
+    - install
+    - supervisor

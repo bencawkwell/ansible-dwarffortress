@@ -1,0 +1,14 @@
+[program:Xvfb]
+command=Xvfb :1 -screen 0 1280x1024x16
+user=df
+environment=DISPLAY=:1
+
+[program:x11vnc]
+command=x11vnc -forever -display :1 -nopw -listen localhost -xkb -ncache 10
+user=df
+environment=DISPLAY=:1
+
+[program:noVNC]
+command=/noVNC/utils/launch.sh --vnc localhost:5900 & exec /df_linux/df
+user=df
+environment=DISPLAY=:1

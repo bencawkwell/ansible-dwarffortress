@@ -26,6 +26,16 @@ This modifies the init.txt configuration file to set PRINT_MODE to TEXT.
 
 Coming soon.
 
+### noVNC ###
+
+For whatever reason (running in a docker container?) you might not want to control Dwarf Fortress on the host directly, but instead access from another machine. This is why you can provision noVNC so that DF can be accessed from another computer via the browser.
+
+    ansible-playbook novnc.yml --connection=local
+
+You can point your browser to http://localhost:6080/vnc.html and click connect (there is no password). Remember when running DF to set the DISPLAY:
+
+    DISPLAY=:1 /df_linux/df
+
 Depandancies
 ------------
 
@@ -35,9 +45,9 @@ Todo
 ----
 
 * Add the Phoebus tile set.
-* Add noVnc.
-* Add some more tile sets.
+* Then some more tile sets.
 * Create a tutorial version, which adds a saved game that can be used to follow an online tutorial.
+* Allow for more stuff to be configured, for example which DISPLAY to use when using noVNC.
 
 Credits
 -------

@@ -1,0 +1,12 @@
+---
+- hosts: all
+
+  roles:
+    - common
+    - supervisor
+    - novnc
+
+  tasks:
+    - name: start application
+      sudo: yes
+      supervisorctl: name=novnc state=restarted
