@@ -24,3 +24,12 @@
   tags:
     - install
     - reset
+
+- name: Change permissions of /df_linux to be owned by df user
+  file: path=/df_linux
+        recurse=yes
+        owner=df
+        group=df
+  tags:
+    - install
+    - reset
