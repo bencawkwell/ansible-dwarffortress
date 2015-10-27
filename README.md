@@ -10,9 +10,11 @@ Within the directory of this project:
 
     ansible-playbook df_40_20.yml --connection=local
 
-This installs the dependencies for dwarf fortress, and dwarf fortress itself.
+This installs the dependencies for dwarf fortress, and dwarf fortress itself which can be run using the command:
 
-If you want to run in text mode
+    dwarffortress
+
+If you want dwarf fortress to be configured to run in text mode
 
     ansible-playbook textmode.yml --connection=local
 
@@ -21,6 +23,8 @@ This modifies the init.txt configuration file to set PRINT_MODE to TEXT.
 ### DfHack ###
 
     ansible-playbook dfhack.yml --connection=local
+
+As well as adding DfHack it also modifies the dwarffortress command to execute the dfhack script instead of the usual df.
 
 ### Tile sets ###
 
@@ -34,9 +38,9 @@ For whatever reason (running in a docker container?) you might not want to contr
 
 You can point your browser to http://localhost:6080/vnc.html and click connect (there is no password). Remember when running DF to set the DISPLAY:
 
-    DISPLAY=:1 /df_linux/df
+    DISPLAY=:1 dwarffortress
 
-Depandancies
+Dependencies
 ------------
 
 Tested with ansible 1.8.2.

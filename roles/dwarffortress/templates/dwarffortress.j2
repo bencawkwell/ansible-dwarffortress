@@ -1,0 +1,17 @@
+#!/bin/bash
+typeset -A config # init array
+config=( # set default values in config array
+    [df_dir]="/df_linux"
+    [df_launcher]="df"
+)
+
+while read line
+do
+    if echo $line | grep -F = &>/dev/null
+    then
+        varname=$(echo "$line" | cut -d '=' -f 1)
+        config[$varname]=$(echo "$line" | cut -d '=' -f 2-)
+    fi
+done < /etc/dwarffortress.conf
+
+(cd ${config[df_dir]} && ./${config[df_launcher]})

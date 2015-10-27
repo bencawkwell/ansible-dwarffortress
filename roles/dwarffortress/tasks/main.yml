@@ -9,6 +9,21 @@
     - install
     - reset
 
+- name: Add dwarffortress to the path
+  template: src=dwarffortress.j2
+            dest=/bin/dwarffortress
+            mode=0755
+  tags:
+    - install
+    - reset
+
+- name: Add empty dwarffortress.conf to /etc
+  file: dest=/etc/dwarffortress.conf
+        state=touch
+  tags:
+    - install
+    - reset
+
 - name: Fix sound (libopenal.so)
   file: src=/usr/lib/i386-linux-gnu/libopenal.so.1
         dest=/df_linux/libs/libopenal.so

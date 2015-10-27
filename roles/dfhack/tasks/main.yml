@@ -11,11 +11,20 @@
     - install
     - reset
 
+- name: Set dfhack in /etc/dwarffortress.conf
+  lineinfile: dest=/etc/dwarffortress.conf
+              regexp='^df_launcher(.*)$'
+              line='df_launcher=dfhack'
+              state=present
+  tags:
+    - reset
+    - configure
+
 - name: Copy dfhack.init-example to dfhack.init
   command: cp /df_linux/dfhack.init-example /df_linux/dfhack.init
   tags:
-    - install
     - reset
+    - configure
 
 - name: Change permissions of /df_linux to be owned by df user
   file: path=/df_linux
