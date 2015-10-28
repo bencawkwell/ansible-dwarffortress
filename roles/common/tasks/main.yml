@@ -16,6 +16,7 @@
     - libsdl-sound1.2:i386
     - libsdl-ttf2.0-0:i386
     - libopenal1:i386
+    - unzip
   tags: install
 
 - name: Ensure df group exist

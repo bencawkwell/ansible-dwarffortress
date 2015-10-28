@@ -28,7 +28,9 @@ As well as adding DfHack it also modifies the dwarffortress command to execute t
 
 ### Tile sets ###
 
-Coming soon.
+Currently only Phoebus is included, it can be configured by running:
+
+    ansible-playbook tileset-phoebus.yml --connection=local
 
 ### noVNC ###
 
@@ -48,8 +50,8 @@ Tested with ansible 1.8.2.
 Todo
 ----
 
-* Add the Phoebus tile set.
-* Then some more tile sets.
+* Update existing saved games when the tile set changes.
+* Add some more tile sets.
 * Create a tutorial version, which adds a saved game that can be used to follow an online tutorial.
 * Allow for more stuff to be configured, for example which DISPLAY to use when using noVNC.
 
