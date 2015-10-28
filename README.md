@@ -8,7 +8,7 @@ Usage
 
 Within the directory of this project:
 
-    ansible-playbook df_40_20.yml --connection=local
+    ansible-playbook dwarffortress.yml --connection=local
 
 This installs the dependencies for dwarf fortress, and dwarf fortress itself which can be run using the command:
 
