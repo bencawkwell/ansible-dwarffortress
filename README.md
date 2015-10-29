@@ -42,6 +42,10 @@ Currently only Phoebus is included, it can be configured by running:
 
     ansible-playbook tileset-phoebus.yml --connection=local
 
+If you configure a tile set, but have already saved games that were using a previous one, then the raw directory should be updated within those saved games. The first time you run dwarffortress after changing tile set you can pass an option to update the saved games:
+
+    dwarffortress --update-saves
+
 ### noVNC ###
 
 For whatever reason (running in a docker container?) you might not want to control Dwarf Fortress on the host directly, but instead access from another machine. This is why you can provision noVNC so that DF can be accessed from another computer via the browser.

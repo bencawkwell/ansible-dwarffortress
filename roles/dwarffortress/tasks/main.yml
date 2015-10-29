@@ -10,7 +10,7 @@
     - reset
 
 - name: Add dwarffortress launcher
-  get_url: url=https://raw.githubusercontent.com/bencawkwell/launch_df/v0.3.0/dwarffortress
+  get_url: url=https://raw.githubusercontent.com/bencawkwell/launch_df/v0.3.1/dwarffortress
            dest=/bin/dwarffortress
            mode=0755
   tags:
