@@ -20,6 +20,16 @@ If you want dwarf fortress to be configured to run in text mode
 
 This modifies the init.txt configuration file to set PRINT_MODE to TEXT.
 
+### dwarffortress launcher ###
+
+When launching dwarf fortress via the dwarffortress command, some settings in init.txt can be modified using command line arguments. For example to skip the intro:
+
+    dwarffortress --skip-intro
+
+To see the full list or possible options:
+
+    dwarffortress --help
+
 ### DfHack ###
 
     ansible-playbook dfhack.yml --connection=local
