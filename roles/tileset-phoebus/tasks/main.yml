@@ -44,7 +44,7 @@
 
 - name: Set init.txt FONT to phoebus
   lineinfile: dest=/df_linux/data/init/init.txt
-              regexp='^\[FONT(.*)$'
+              regexp='^\[FONT\:(.*)$'
               line=[FONT:Phoebus_16x16.png]
               state=present
               backrefs=yes
@@ -52,7 +52,7 @@
 
 - name: Set init.txt FULLFONT to phoebus
   lineinfile: dest=/df_linux/data/init/init.txt
-              regexp='^\[FULLFONT(.*)$'
+              regexp='^\[FULLFONT\:(.*)$'
               line=[FULLFONT:Phoebus_16x16.png]
               state=present
               backrefs=yes
@@ -60,7 +60,7 @@
 
 - name: Set init.txt GRAPHICS to YES
   lineinfile: dest=/df_linux/data/init/init.txt
-              regexp='^\[GRAPHICS(.*)$'
+              regexp='^\[GRAPHICS\:(.*)$'
               line=[GRAPHICS:YES]
               state=present
               backrefs=yes
@@ -68,7 +68,7 @@
 
 - name: Set init.txt GRAPHICS_FONT to phoebus
   lineinfile: dest=/df_linux/data/init/init.txt
-              regexp='^\[GRAPHICS_FONT(.*)$'
+              regexp='^\[GRAPHICS_FONT\:(.*)$'
               line=[GRAPHICS_FONT:Phoebus_16x16.png]
               state=present
               backrefs=yes
@@ -76,7 +76,7 @@
 
 - name: Set init.txt GRAPHICS_FULLFONT to phoebus
   lineinfile: dest=/df_linux/data/init/init.txt
-              regexp='^\[GRAPHICS_FULLFONT(.*)$'
+              regexp='^\[GRAPHICS_FULLFONT\:(.*)$'
               line=[GRAPHICS_FULLFONT:Phoebus_16x16.png]
               state=present
               backrefs=yes
@@ -84,7 +84,7 @@
 
 - name: Set init.txt TRUETYPE to YES
   lineinfile: dest=/df_linux/data/init/init.txt
-              regexp='^\[TRUETYPE(.*)$'
+              regexp='^\[TRUETYPE\:(.*)$'
               line=[TRUETYPE:YES]
               state=present
               backrefs=yes

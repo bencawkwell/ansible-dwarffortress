@@ -24,7 +24,7 @@
 
 - name: Set PRINT_MODE to 2D in df configuration
   lineinfile: dest=/df_linux/data/init/init.txt
-              regexp='^\[PRINT_MODE(.*)$'
+              regexp='^\[PRINT_MODE\:(.*)$'
               line=[PRINT_MODE:2D]
               state=present
               backrefs=yes
@@ -32,7 +32,7 @@
 
 - name: Set WINDOWED to NO in df configuration
   lineinfile: dest=/df_linux/data/init/init.txt
-              regexp='^\[WINDOWED(.*)$'
+              regexp='^\[WINDOWED\:(.*)$'
               line=[WINDOWED:NO]
               state=present
               backrefs=yes
