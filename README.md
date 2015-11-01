@@ -56,6 +56,19 @@ You can point your browser to http://localhost:6080/vnc.html and click connect (
 
     DISPLAY=:1 dwarffortress
 
+### XPRA ###
+
+Another option for remote viewing is using XPRA, as an alternative to using noVNC. It can be provisioned with:
+
+    ansible-playbook xpra.yml --connection=local
+
+You can connect using the username "df" and the password "changeme". Using XPRA comes with the following limitations:
+
+* You must use the latest version of XPRA to connect, the version normally available through the package managers is out of date, instead get the latest version from https://winswitch.org.
+* DO NOT USE FULLSCREEN, it will result in really high load, I suspect this is because Dwarf Fortress tries to scale to fit the window, and fullscreen in XPRA reports this in a quirky way.
+* DO NOT PROVISION NOVNC, since that playbook already sets up an instance of Xvfb on DISPLAY 1, so the xpra process fails to start.
+* The only reliable encoding I have found to work is "Raw RGB + zlib".
+
 Dependencies
 ------------
 

@@ -1,0 +1,7 @@
+[program:ssh]
+command=/usr/sbin/sshd -D
+
+[program:xpra]
+command=xpra start --no-daemon :1
+user=df
+environment=HOME="/home/df"
