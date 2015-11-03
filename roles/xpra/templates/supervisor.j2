@@ -2,6 +2,6 @@
 command=/usr/sbin/sshd -D
 
 [program:xpra]
-command=xpra start --no-daemon :1
+command=xpra start --no-daemon --use-display :1
 user=df
 environment=HOME="/home/df"

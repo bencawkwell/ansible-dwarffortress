@@ -4,4 +4,5 @@
   roles:
     - common
     - supervisor
+    - xdummy
     - xpra

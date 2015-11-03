@@ -1,0 +1,22 @@
+---
+- name: Install xdummy
+  sudo: yes
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - xserver-xorg-video-dummy
+  tags: install
+
+- name: Fetch xorg.conf
+  get_url: url=https://www.xpra.org/xorg.conf
+           dest=/xorg.conf
+  tags: install
+
+- name: Set sensible resolution in xorg.conf
+  lineinfile: dest=/xorg.conf
+              regexp='^( +)?Virtual (.*)$'
+              line="Virtual {{screen_x}} {{screen_y}}"
+              state=present
+              backrefs=yes
+  tags: configure
+
+- include: supervisor.yml

@@ -6,7 +6,6 @@
     - x11vnc
     - python
     - python-numpy
-    - xvfb
   tags: install
 
 - name: Fetch noVNC

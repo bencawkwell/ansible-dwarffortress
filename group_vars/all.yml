@@ -3,3 +3,7 @@ df_version: "40_24"
 
 # Version of dfhack
 dfhack_version: "0.40.24-r3"
+
+# Screen resolution
+screen_x: 1280
+screen_y: 960

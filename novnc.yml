@@ -4,6 +4,7 @@
   roles:
     - common
     - supervisor
+    - xdummy
     - novnc
 
   tasks:
