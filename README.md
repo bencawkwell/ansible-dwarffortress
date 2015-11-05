@@ -69,6 +69,16 @@ You can connect using the username "df" and the password "changeme". Using XPRA 
 * DO NOT PROVISION NOVNC, since that playbook already sets up an instance of Xvfb on DISPLAY 1, so the xpra process fails to start.
 * The only reliable encoding I have found to work is "Raw RGB + zlib".
 
+### Gitwatch ###
+
+If you are like me (a clumsy perfectionist) then occasionally your grand plans of building a magma moat are shattered by a hoard of goblins just wandering through the hole under a wall that was accidentally left behind after draining a pond several saves ago (true story). This utility when provisioned will automatically make a git commit every time you save.
+
+    ansible-playbook gitwatch.yml --connection=local
+
+It will only commit if /df_linux/data/save is a git repository, so you will need to run the following command in that directory:
+
+    git init
+
 Dependencies
 ------------
 
@@ -88,3 +98,4 @@ Credits
 * Obviously Toady One at http://www.bay12games.com for Dwarf Fortress.
 * All the guys that maintain the Dwarf Fortress wiki (http://dwarffortresswiki.org/index.php/DF2012:Installation)
 * Chris Collins who's project inspired me to use noVNC (https://github.com/DockerDemos/DwarfFortressServer) and what I used to get started.
+* Nevik Rehnel for gitwatch (https://github.com/nevik/gitwatch)

@@ -1,0 +1,34 @@
+---
+- name: Install gitwatch dependancies
+  sudo: yes
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - git
+    - inotify-tools
+  tags: install
+
+- name: Add gitwatch script
+  get_url: url=https://raw.githubusercontent.com/nevik/gitwatch/master/gitwatch.sh
+           dest=/gitwatch.sh
+           mode=0755
+  tags:
+    - install
+
+- name: Add gitwatch wrapper script
+  sudo: yes
+  template: src=setup-gitwatch.j2
+            dest=/setup-gitwatch.sh
+            mode=0755
+  tags:
+    - install
+
+- name: Configure .gitconfig file
+  template: src=gitconfig.j2
+            dest=/home/df/.gitconfig
+            owner=df
+            group=df
+  tags:
+    - install
+    - configure
+
+- include: supervisor.yml
