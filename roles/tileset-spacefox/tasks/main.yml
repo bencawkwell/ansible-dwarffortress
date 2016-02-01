@@ -1,0 +1,100 @@
+---
+- name: Fetch Tile Set Spacefox
+  get_url: url=http://dffd.bay12games.com/download.php?id=7867&f=%5B16x16%5D+Spacefox+34.11v1.0.zip
+           dest=/spacefox.zip
+  tags: install
+
+- name: create spacefox directory
+  file: path=/spacefox
+        state=directory
+        mode=0755
+  tags:
+    - install
+    - reset
+
+- name: Decompress Tile Set Spacefox
+  unarchive: src=/spacefox.zip dest=/spacefox copy=no
+  tags:
+    - install
+    - reset
+
+- name: Copy over spacefox raw
+  command: cp -ar /spacefox/\[16x16\]\ Spacefox\ 34.11v1.0/raw /df_linux/
+  tags:
+    - reset
+    - configure
+
+- name: Copy spacefox art to data/
+  command: cp -ar /spacefox/\[16x16\]\ Spacefox\ 34.11v1.0/data/art /df_linux/data/
+  tags:
+    - reset
+    - configure
+
+- name: Copy spacefox colors.txt to data/init/
+  command: cp -ar /spacefox/\[16x16\]\ Spacefox\ 34.11v1.0/data/init/colors.txt /df_linux/data/init/colors.txt
+  tags:
+    - reset
+    - configure
+
+- name: Copy spacefox d_init.txt to data/init/
+  command: cp -ar /spacefox/\[16x16\]\ Spacefox\ 34.11v1.0/data/init/d_init.txt /df_linux/data/init/d_init.txt
+  tags:
+    - reset
+    - configure
+
+- name: Set init.txt FONT to spacefox
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[FONT\:(.*)$'
+              line=[FONT:Spacefox_16x16.png]
+              state=present
+              backrefs=yes
+  tags: configure
+
+- name: Set init.txt FULLFONT to spacefox
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[FULLFONT\:(.*)$'
+              line=[FULLFONT:Spacefox_16x16.png]
+              state=present
+              backrefs=yes
+  tags: configure
+
+- name: Set init.txt GRAPHICS to YES
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[GRAPHICS\:(.*)$'
+              line=[GRAPHICS:YES]
+              state=present
+              backrefs=yes
+  tags: configure
+
+- name: Set init.txt GRAPHICS_FONT to spacefox
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[GRAPHICS_FONT\:(.*)$'
+              line=[GRAPHICS_FONT:Spacefox_16x16.png]
+              state=present
+              backrefs=yes
+  tags: configure
+
+- name: Set init.txt GRAPHICS_FULLFONT to spacefox
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[GRAPHICS_FULLFONT\:(.*)$'
+              line=[GRAPHICS_FULLFONT:Spacefox_16x16.png]
+              state=present
+              backrefs=yes
+  tags: configure
+
+- name: Set init.txt TRUETYPE to YES
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[TRUETYPE\:(.*)$'
+              line=[TRUETYPE:YES]
+              state=present
+              backrefs=yes
+  tags: configure
+
+- name: Change permissions of /df_linux to be owned by df user
+  file: path=/df_linux
+        recurse=yes
+        owner=df
+        group=df
+  tags:
+    - install
+    - reset

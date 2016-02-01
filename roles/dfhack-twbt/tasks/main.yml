@@ -1,0 +1,76 @@
+---
+- name: Fetch the dfhack plugin twbt
+  get_url: url=https://github.com/mifki/df-twbt/releases/download/v5.47/twbt-5.47-linux.zip
+           dest=/twbt.zip
+  tags: install
+
+- name: create twbt directory
+  file: path=/twbt
+        state=directory
+        mode=0755
+  tags:
+    - install
+    - reset
+
+- name: Decompress twbt
+  unarchive: src=/twbt.zip dest=/twbt copy=no
+  tags:
+    - install
+    - reset
+
+- name: get the list of twbt plugin files (.so)
+  shell: ls -d /twbt/0.40.24-r3/*.so
+  register: twbt_plugins
+  tags:
+    - reset
+    - configure
+
+- name: Copy over twbt plugins to hack/plugins/
+  command: cp {{ item }} /df_linux/hack/plugins/
+  with_items: twbt_plugins.stdout_lines
+  tags:
+    - reset
+    - configure
+
+- name: Copy twbt shadows.png to data/art
+  command: cp -ar /twbt/shadows.png /df_linux/data/art/
+  tags:
+    - reset
+    - configure
+
+- name: Copy twbt curses_800x600.png to data/art
+  command: cp -ar /twbt/curses_800x600.png /df_linux/data/art/
+  tags:
+    - reset
+    - configure
+
+- name: Copy twbt overrides.txt to data/init/
+  command: cp -ar /twbt/overrides.txt /df_linux/data/init/
+  tags:
+    - reset
+    - configure
+
+- name: Set init.txt FONT to to text tileset if the tileset is Spacefox
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[FONT\:(.*)$'
+              line=[FONT:curses_800x600.png]
+              state=present
+              backrefs=yes
+  tags: configure
+
+- name: Set init.txt FULLFONT to to text tileset if the tileset is Spacefox
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[FULLFONT\:(.*)$'
+              line=[FULLFONT:curses_800x600.png]
+              state=present
+              backrefs=yes
+  tags: configure
+
+- name: Change permissions of /df_linux to be owned by df user
+  file: path=/df_linux
+        recurse=yes
+        owner=df
+        group=df
+  tags:
+    - install
+    - reset
