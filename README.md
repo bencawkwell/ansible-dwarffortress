@@ -52,9 +52,9 @@ For whatever reason (running in a docker container?) you might not want to contr
 
     ansible-playbook novnc.yml --connection=local
 
-You can point your browser to http://localhost:6080/vnc.html and click connect (there is no password). Remember when running DF to set the DISPLAY:
+You can point your browser to http://localhost:6080/vnc.html and click connect (there is no password). Remember when running DF to set the DISPLAY, which by default is set to display 100:
 
-    DISPLAY=:1 dwarffortress
+    DISPLAY=:100 dwarffortress
 
 ### XPRA ###
 
@@ -90,7 +90,7 @@ Todo
 * Update existing saved games when the tile set changes.
 * Add some more tile sets.
 * Create a tutorial version, which adds a saved game that can be used to follow an online tutorial.
-* Allow for more stuff to be configured, for example which DISPLAY to use when using noVNC.
+* Allow for more stuff to be configured, for example which user account to use.
 
 Credits
 -------
