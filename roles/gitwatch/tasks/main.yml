@@ -31,4 +31,20 @@
     - install
     - configure
 
+- name: Set INITIAL_SAVE to YES in df configuration
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[INITIAL_SAVE\:(.*)$'
+              line=[INITIAL_SAVE:YES]
+              state=present
+              backrefs=yes
+  tags: configure
+
+- name: Set COMPRESSED_SAVES to NO in df configuration
+  lineinfile: dest=/df_linux/data/init/init.txt
+              regexp='^\[COMPRESSED_SAVES\:(.*)$'
+              line=[COMPRESSED_SAVES:NO]
+              state=present
+              backrefs=yes
+  tags: configure
+
 - include: supervisor.yml
