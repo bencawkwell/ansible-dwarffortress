@@ -19,7 +19,11 @@
 
 - name: Install XPRA
   sudo: yes
-  apt: pkg={{ item }} state=latest update_cache=yes install_recommends=no
+  apt: pkg={{ item }}
+       state=latest
+       update_cache=yes
+       cache_valid_time=3600
+       install_recommends=no
   with_items:
     - ssh
     - xpra
