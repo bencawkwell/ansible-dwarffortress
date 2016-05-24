@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: dwarffortress }
+  - { role: supervisor }

@@ -2,9 +2,6 @@
 - hosts: all
 
   roles:
-    - common
-    - supervisor
-    - xdummy
     - novnc
 
   tasks:

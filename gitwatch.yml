@@ -2,6 +2,4 @@
 - hosts: all
 
   roles:
-    - common
-    - supervisor
     - gitwatch

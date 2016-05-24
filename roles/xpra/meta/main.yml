@@ -1,3 +1,6 @@
 ---
 dependencies:
+  - { role: dwarffortress }
+  - { role: supervisor }
+  - { role: xdummy }
   - { role: x-display, display: "{{ x_display }}" }

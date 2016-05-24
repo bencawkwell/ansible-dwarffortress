@@ -2,7 +2,4 @@
 - hosts: all
 
   roles:
-    - common
-    - supervisor
-    - xdummy
     - xpra
