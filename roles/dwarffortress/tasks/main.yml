@@ -1,6 +1,6 @@
 ---
 - name: Fetch DF
-  get_url: url=http://www.bay12games.com/dwarves/df_{{df_version}}_linux.tar.bz2 dest=/df_linux.tar.bz2
+  get_url: url=http://www.bay12games.com/dwarves/df_40_24_linux.tar.bz2 dest=/df_linux.tar.bz2
   tags: install
 
 - name: Decompress DF
