@@ -1,6 +1,6 @@
 ---
 - name: Fetch Armok Vision
-  get_url: url=https://github.com/JapaMala/armok-vision/releases/download/v0.9.0/Armok.Vision.0.9.0.Linux.zip
+  get_url: url=https://github.com/JapaMala/armok-vision/releases/download/v0.9.1/Armok.Vision.0.9.1.Linux.zip
            dest=/armok-vision.zip
   tags: install
 
