@@ -1,0 +1,51 @@
+---
+- name: Fetch Armok Vision
+  get_url: url=https://github.com/JapaMala/armok-vision/releases/download/v0.9.0/Armok.Vision.0.9.0.Linux.zip
+           dest=/armok-vision.zip
+  tags: install
+
+- name: create armok-vision directory
+  file: path=//df_linux/armok-vision
+        state=directory
+        mode=0755
+  tags:
+    - install
+    - reset
+
+- name: Decompress Armok Vision
+  unarchive: src=/armok-vision.zip dest=/df_linux/armok-vision copy=no
+  tags:
+    - install
+    - reset
+
+- name: Change permissions of Armok Vision to be owned by df user
+  file: path=/df_linux/armok-vision
+        recurse=yes
+        owner=df
+        group=df
+
+- name: Change permissions of Armok Vision to be executable
+  file: path=/df_linux/armok-vision/Armok\ Vision.x86
+        mode=u+rwx
+  tags:
+    - install
+    - reset
+
+- name: Add wrapper script
+  template: src=launch-with-av.j2
+            dest=/df_linux/launch-with-av.sh
+            mode=0755
+            owner=df
+            group=df
+  tags:
+    - install
+    - reset
+
+- name: Add Armok Vision to be executed in /etc/dwarffortress.conf
+  lineinfile: dest=/etc/dwarffortress.conf
+              regexp='^df_launcher(.*)$'
+              line='df_launcher=launch-with-av.sh'
+              state=present
+  tags:
+    - reset
+    - configure
