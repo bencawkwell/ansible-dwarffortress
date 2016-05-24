@@ -79,6 +79,17 @@ It will only commit if /df_linux/data/save is a git repository, so you will need
 
     git init
 
+Versions
+--------
+
+Originally the plan was to make the versions of dwarf fortress easily configurable. However with different file names being published by dfhack, this is not possible. So instead I will tag using a similar version scheme to dfhack that follows the releases of dwarf fortress:
+
+ - v0.40.24-r1 will be a tested version using dwarf fortress 0.40.24.
+ - v0.40.24-r2 will contain any subsequent bugfixes or improvements to this project.
+ - v0.42.06-r1 will be a tested version using dwarf fortress 0.42.06
+
+The r1/2 will have nothing to do with which dfhack release is included. I will try and keep the dfhack version that is included up-to-date but I cannot promise to track every dfhack release.
+
 Dependencies
 ------------
 
