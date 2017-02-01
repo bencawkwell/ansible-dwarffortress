@@ -10,8 +10,7 @@
   tags: install
 
 - name: Fetch xorg.conf
-  get_url: url=https://www.xpra.org/xorg.conf
-           dest=/xorg.conf
+  command: curl -o /xorg.conf https://www.xpra.org/xorg.conf
   tags: install
 
 - name: Set sensible resolution in xorg.conf
