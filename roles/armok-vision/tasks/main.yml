@@ -1,11 +1,11 @@
 ---
 - name: Fetch Armok Vision
-  get_url: url=https://github.com/JapaMala/armok-vision/releases/download/v0.9.0/Armok.Vision.0.9.0.Linux.zip
+  get_url: url=https://github.com/JapaMala/armok-vision/releases/download/v0.13.1/Armok.Vision.v0.13.1.Linux.zip
            dest=/armok-vision.zip
   tags: install
 
 - name: create armok-vision directory
-  file: path=//df_linux/armok-vision
+  file: path=/df_linux/armok-vision
         state=directory
         mode=0755
   tags:
@@ -25,7 +25,7 @@
         group=df
 
 - name: Change permissions of Armok Vision to be executable
-  file: path=/df_linux/armok-vision/Armok\ Vision.x86
+  file: path=/df_linux/armok-vision/Armok\ Vision.x86_64
         mode=u+rwx
   tags:
     - install
