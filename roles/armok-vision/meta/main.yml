@@ -1,4 +1,3 @@
 ---
 dependencies:
   - { role: dfhack }
-  - { role: openbox }

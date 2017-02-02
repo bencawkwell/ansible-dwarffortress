@@ -4,3 +4,4 @@ dependencies:
   - { role: supervisor }
   - { role: xdummy }
   - { role: x-display, display: "{{ x_display }}" }
+  - { role: openbox }
