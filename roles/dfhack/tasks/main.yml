@@ -1,15 +1,4 @@
 ---
-- name: Install stonesense dependancies
-  sudo: yes
-  apt: pkg={{ item }}
-       state=latest
-       update_cache=yes
-       cache_valid_time=3600
-  with_items:
-    - libjpeg62:i386
-    - libsm6:i386
-  tags: install
-
 - name: Fetch DFHack
   get_url: url=https://github.com/DFHack/dfhack/releases/download/0.43.05-alpha4/dfhack-0.43.05-alpha4-Linux-64-gcc-4.8.1.tar.bz2
            dest=/dfhack.tar.bz2
