@@ -1,6 +1,6 @@
 ---
 - name: Fetch Tile Set Phoebus
-  get_url: url=http://dffd.bay12games.com/download.php?id=2430&f=Phoebus_40_24v00.zip
+  get_url: url=https://github.com/DFgraphics/Phoebus/archive/43.05c.zip
            dest=/phoebus.zip
   tags: install
 
@@ -13,31 +13,39 @@
     - reset
 
 - name: Decompress Tile Set Phoebus
-  unarchive: src=/phoebus.zip dest=/phoebus copy=no
+  unarchive: src=/phoebus.zip
+             dest=/phoebus
+             copy=no
   tags:
     - install
     - reset
 
 - name: Copy over phoebus raw
-  command: cp -ar /phoebus/raw /df_linux/
+  shell: cp -ar /phoebus/Phoebus-*/raw /df_linux/
   tags:
     - reset
     - configure
 
 - name: Copy phoebus art to data/
-  command: cp -ar /phoebus/data/art /df_linux/data/
+  shell: cp -ar /phoebus/Phoebus-*/data/art /df_linux/data/
   tags:
     - reset
     - configure
 
 - name: Copy phoebus colors.txt to data/init/
-  command: cp -ar /phoebus/data/init/phoebus/colors.txt /df_linux/data/init/colors.txt
+  shell: cp -ar /phoebus/Phoebus-*/data/init/colors.txt /df_linux/data/init/colors.txt
   tags:
     - reset
     - configure
 
 - name: Copy phoebus d_init.txt to data/init/
-  command: cp -ar /phoebus/data/init/phoebus/d_init.txt /df_linux/data/init/d_init.txt
+  shell: cp -ar /phoebus/Phoebus-*/data/init/d_init.txt /df_linux/data/init/d_init.txt
+  tags:
+    - reset
+    - configure
+
+- name: Copy phoebus overrides.txt to data/init/
+  shell: cp -ar /phoebus/Phoebus-*/data/init/overrides.txt /df_linux/data/init/overrides.txt
   tags:
     - reset
     - configure
@@ -45,7 +53,7 @@
 - name: Set init.txt FONT to phoebus
   lineinfile: dest=/df_linux/data/init/init.txt
               regexp='^\[FONT\:(.*)$'
-              line=[FONT:Phoebus_16x16.png]
+              line=[FONT:Jecobus_10x16.png]
               state=present
               backrefs=yes
   tags: configure
@@ -53,7 +61,7 @@
 - name: Set init.txt FULLFONT to phoebus
   lineinfile: dest=/df_linux/data/init/init.txt
               regexp='^\[FULLFONT\:(.*)$'
-              line=[FULLFONT:Phoebus_16x16.png]
+              line=[FULLFONT:Jecobus_10x16.png]
               state=present
               backrefs=yes
   tags: configure

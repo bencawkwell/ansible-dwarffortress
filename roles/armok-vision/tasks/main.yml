@@ -1,6 +1,6 @@
 ---
 - name: Fetch Armok Vision
-  get_url: url=https://github.com/JapaMala/armok-vision/releases/download/v0.13.1/Armok.Vision.v0.13.1.Linux.zip
+  get_url: url=https://github.com/JapaMala/armok-vision/releases/download/v0.15.0/Armok.Vision.v0.15.0.Linux.zip
            dest=/armok-vision.zip
   tags: install
 
@@ -13,7 +13,9 @@
     - reset
 
 - name: Decompress Armok Vision
-  unarchive: src=/armok-vision.zip dest=/df_linux/armok-vision copy=no
+  unarchive: src=/armok-vision.zip
+             dest=/df_linux/armok-vision
+             copy=no
   tags:
     - install
     - reset
